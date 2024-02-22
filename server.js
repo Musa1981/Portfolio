@@ -8,8 +8,10 @@ const helmet = require('helmet');
 const app = express();
 const port = 3000;
 
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.post(
   '/send-email',
@@ -32,12 +34,12 @@ app.post(
     const transporter = nodemailer.createTransport({
       host: 'smtp.strato.com',
       port: 465,
-      secure: true,
+      secure: true, 
       auth: {
         user: process.env.EMAIL_USER,
         pass: process.env.EMAIL_PASSWORD,
       },
-      authMethod: 'LOGIN', 
+       
     });
 
     const mailOptions = {
