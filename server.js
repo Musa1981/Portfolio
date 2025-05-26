@@ -12,13 +12,13 @@ app.use(helmet());
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-
 app.post(
   '/send-email',
   [
     body('name').trim().isLength({ min: 1 }).escape(),
     body('email').trim().isEmail().normalizeEmail(),
     body('message').trim().isLength({ min: 1 }).escape(),
+    
   ],
   (req, res) => {
     const errors = validationResult(req);
@@ -33,7 +33,7 @@ app.post(
 
     const transporter = nodemailer.createTransport({
       host: 'smtp.strato.com',
-      port: 465,
+      port: 587,
       secure: true, 
       auth: {
         user: process.env.EMAIL_USER,
@@ -63,4 +63,4 @@ app.post(
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-});
+});  
