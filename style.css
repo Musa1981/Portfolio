@@ -84,11 +84,19 @@ body {
 }
 
 #home-img img {
-    width: 300px;
-    height: 300px;
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1 / 1;
     border-radius: 50%;
     animation: floatImage 4s ease-in-out infinite;
+    object-fit: cover;
+    object-position: center 35%;
+    /* ⬅️ detta flyttar fokus nedåt */
+    display: block;
 }
+
+
+
 
 @keyframes floatImage {
     0% {
@@ -313,9 +321,16 @@ span {
 }
 
 .tech-stack img {
-    height: 50px;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    background-color: #fff;
+    padding: 6px;
+    border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 }
+
 
 .tech-stack img:hover {
     transform: scale(1.1);
